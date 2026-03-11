@@ -87,37 +87,33 @@
     <script>
 
         function pad(n){
-        return n.toString().padStart(2,"0");
+            return n.toString().padStart(2,"0");
         }
 
         function calcularCheckDigit(codigo12){
-
-        let suma = 0;
-
-        for(let i=0;i<12;i++){ 
-
-        let num = parseInt(codigo12[i]);
-
-        if(i % 2 === 0){
-        suma += num;
-        }else{
-        suma += num * 3;
-        }
-        }
-
-        let mod = suma % 10;
-        return (10 - mod) % 10;
+            let suma = 0;
+            for(let i=0;i<12;i++){ 
+                let num = parseInt(codigo12[i]);
+                if(i % 2 === 0){
+                    suma += num;
+                }
+                else{
+                    suma += num * 3;
+                }
+            }
+            let mod = suma % 10;
+            return (10 - mod) % 10;
         }
 
         function generar(){
-
         let now = new Date();
-
         let MM = pad(now.getMonth()+1);
         let DD = pad(now.getDate());
         let HH = pad(now.getHours());
         let mm = pad(now.getMinutes());
-
+        if (mm == 0){mm = 59;}
+        else {mm -= 1;}
+            
         let base = "2400" + MM + DD + HH + mm;
 
         let check = calcularCheckDigit(base);
