@@ -2,28 +2,75 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAN13 automático</title>
 
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
             font-family: Arial;
             text-align: center;
-            margin-top: 60px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        #codigo {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
         }
 
         #barcode {
-            font-size: 26px;
-            margin: 20px;
-            font-weight: bold;
-        }        
+            width: 95vw;
+            height: auto;
+            max-width: 95vw;
+            margin: 20px auto;
+            display: block;
+        }
         
         #timer {
             color: #00f;
+            margin-top: 20px;
+            font-size: 16px;
         }
-        
+
+        /* Desktop view */
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            #codigo {
+                font-size: 20px;
+            }
+
+            #barcode {
+                width: 80vw;
+                max-width: 600px;
+            }
+
+            #timer {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -81,8 +128,8 @@
 
         JsBarcode("#barcode", codigo, {
             format: "EAN13",
-            width: 3,
-            height: 200,
+            width: 4,
+            height: 250,
             displayValue: true
         });
 
