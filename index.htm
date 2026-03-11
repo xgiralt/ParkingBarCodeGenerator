@@ -19,6 +19,12 @@
             font-weight: bold;
         }
 
+        #barcode {
+            width: 95vw;
+            max-width: 600px;
+            height: auto;
+        }
+        
         #timer {
             color: #00f;
         }
@@ -67,7 +73,7 @@
         let MM = pad(now.getMonth()+1);
         let DD = pad(now.getDate());
         let HH = pad(now.getHours());
-        let mm = pad(now.getMinutes());
+        let mm = pad(now.getMinutes()-1);
 
         let base = "2400" + MM + DD + HH + mm;
 
@@ -78,11 +84,10 @@
         document.getElementById("codigo").innerText = codigo;
 
         JsBarcode("#barcode", codigo, {
-        format: "EAN13",
-        width: 95vw,
-        max-width: 600px,
-        height: auto,
-        displayValue: true
+            format: "EAN13",
+            width: 95vw,
+            height: 200,
+            displayValue: true
         });
 
         }
@@ -114,5 +119,6 @@
 </body>
 
 </html>
+
 
 
